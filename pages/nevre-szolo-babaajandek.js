@@ -19,12 +19,10 @@ export default function Landing() {
       setMeaning("Különleges név, különleges történettel. Tedd örök emlékké egy névre szóló ajándékkal.");
     }
     setSubmitted(true);
-    // GA4/Pix: name_submitted
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "name_submitted", source: "nevvarazs-landing", name: name.trim() });
     }
-    // Supabase: /api/log-name – ha készen áll
     try {
       await fetch("/api/log-name", { method: "POST", headers: {"Content-Type":"application/json"},
         body: JSON.stringify({ name: name.trim(), source: "nevvarazs-landing", category: "élmény-ajándék" })
@@ -67,7 +65,7 @@ export default function Landing() {
           )}
         </header>
 
-        {/* Ajándék-bucketek – MINDEN termék lefedve csoportokban */}
+        {/* FEEDBŐL JÖVŐ TERMÉKEK – ezektől fog „megtelni” az oldal */}
         <GiftBuckets bucketId="ujszulott-indulo" title="Újszülött induló 🎀" />
         <GiftBuckets bucketId="mindennapi" title="Mindennapi kedvencek 👶" />
         <GiftBuckets bucketId="keresztelo-premium" title="Keresztelő / különleges alkalom 💎" />
