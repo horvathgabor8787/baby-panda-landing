@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/reindex-products2",
+      "schedule": "0 * * * *"
+    }
+  ]
+}
