@@ -4,7 +4,7 @@ import { normalizeItem } from "../../lib/product-normalizer";
 
 export default async function handler(req, res) {
   try {
-    // auth token check
+    // token check
     const token = req.query.token || req.headers["x-reindex-token"];
     if (!token || token !== process.env.REINDEX_TOKEN) {
       return res.status(401).json({ ok: false, error: "unauthorized" });
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       return res.status(500).json({ ok: false, error: "FEED_URL missing" });
     }
 
-    // feed letöltése
+    // feed fetch
     const r = await fetch(process.env.FEED_URL);
     if (!r.ok) throw new Error(`Feed fetch failed: ${r.status}`);
     const xmlText = await r.text();
