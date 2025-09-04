@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Egyszerű háttér animáció váz */
+body {
+  @apply bg-gradient-to-r from-pink-100 to-purple-100 text-gray-900;
+  font-family: 'Inter', sans-serif;
+}
